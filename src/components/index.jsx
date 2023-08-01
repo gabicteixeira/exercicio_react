@@ -6,37 +6,41 @@ const Calculo = () => {
     let [altura, setaltura] = useState(0);
 
     const calculaImc = () => {
+        if(peso && altura){
         
-        const imc = peso / (altura * altura);
+            const imc = peso / (altura * altura);
 
-        
+            if (imc < 18.5) {
+                return (
+                    <p>Seu IMC é {parseInt(imc.toFixed(2))} kg/m². <br/> <br />
+                    Você está baixo peso</p>
+                )
+            }
 
-        if (imc < 18.5) {
-            return (
-                <p>Seu IMC é {parseInt(imc)} kg/m². <br/> <br />
-                Você está baixo peso</p>
-            )
+            if (imc >= 18.5, imc < 25) {
+                return (
+                    <p>Seu IMC é {parseInt(imc.toFixed(2))} kg/m². <br/> <br />
+                    Você está eutrófico</p>
+                )
+            }
+
+            if (imc >= 5, imc < 30) {
+                return (
+                    <p>Seu IMC é {parseInt(imc.toFixed(2))} kg/m². <br/> <br />
+                    Você está sobrepeso</p>
+                )
+            }
+
+            if (imc > 30) {
+                return (
+                    <p>Seu IMC é {parseInt(imc.toFixed(2))} kg/m². <br/> <br />
+                    Você está com obesidade</p>
+                )
+            }
         }
 
-        if (imc >= 18.5, imc < 25) {
-            return (
-                <p>Seu IMC é {parseInt(imc)} kg/m². <br/> <br />
-                Você está eutrófico</p>
-            )
-        }
-
-        if (imc >= 5, imc < 30) {
-            return (
-                <p>Seu IMC é {parseInt(imc)} kg/m². <br/> <br />
-                Você está sobrepeso</p>
-            )
-        }
-
-        if (imc > 30) {
-            return (
-                <p>Seu IMC é {parseInt(imc)} kg/m². <br/> <br />
-                Você está com obesidade</p>
-            )
+        else {
+            <p>Digite os dois campos</p>
         }
     }
 
